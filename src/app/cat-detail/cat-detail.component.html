@@ -1,0 +1,19 @@
+<div *ngIf="cat">
+  <h2>{{ cat.name | uppercase }} Details</h2>
+  <div><span>Id: </span>{{ cat.id }}</div>
+  <div>
+    <label>Name:
+      <input [(ngModel)]="cat.name" placeholder="name">
+    </label>
+  </div>
+  <div>
+    <label>Color:
+      <input [(ngModel)]="cat.color" placeholder="color">
+    </label>
+  </div>
+  <div>
+    <label>Hobby:
+      <input [(ngModel)]="cat.hobby" placeholder="hobby">
+    </label>
+  </div>
+</div>
