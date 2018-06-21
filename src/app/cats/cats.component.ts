@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cat } from '../cat';
+import { CATS } from '../mock-cats';
 
 @Component({
   selector: 'app-cats',
@@ -8,16 +9,23 @@ import { Cat } from '../cat';
 })
 
 export class CatsComponent implements OnInit {
-  cat: Cat = {
-    id: 1,
-    name: 'Buckminster',
-    color: 'Calico',
-    hobby: 'Happily ignoring when being called.'
-  };
+  // cat: Cat = {
+  //   id: 1,
+  //   name: 'Buckminster',
+  //   color: 'Calico',
+  //   hobby: 'Happily ignoring when being called.'
+  // };
+
+  cats = CATS;
+
+  selectedCat: Cat;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSelect(cat: Cat): void {
+    this.selectedCat = cat;
+  }
 }

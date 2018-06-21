@@ -1,17 +1,28 @@
-<h2>{{ cat.name | uppercase }} Details</h2>
-<div><span>Id: </span>{{ cat.id }}</div>
-<div>
-  <label>Name:
-    <input [(ngModel)]="cat.name" placeholder="name">
-  </label>
-</div>
-<div>
-  <label>Color:
-    <input [(ngModel)]="cat.color" placeholder="color">
-  </label>
-</div>
-<div>
-  <label>Hobby:
-    <input [(ngModel)]="cat.hobby" placeholder="hobby">
-  </label>
+<h2>My Cats</h2>
+<ul class="cats">
+  <li *ngFor="let cat of cats"
+    [class.selected]="cat === selectedCat"
+    (click)="onSelect(cat)">
+    <span class="badge">{{ cat.id }}</span> {{cat.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedCat">
+  <h2>{{ selectedCat.name | uppercase }} Details</h2>
+  <div><span>Id: </span>{{ selectedCat.id }}</div>
+  <div>
+    <label>Name:
+      <input [(ngModel)]="selectedCat.name" placeholder="name">
+    </label>
+  </div>
+  <div>
+    <label>Color:
+      <input [(ngModel)]="selectedCat.color" placeholder="color">
+    </label>
+  </div>
+  <div>
+    <label>Hobby:
+      <input [(ngModel)]="selectedCat.hobby" placeholder="hobby">
+    </label>
+  </div>
 </div>
