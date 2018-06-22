@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cat } from '../cat';
-import { CATS } from '../mock-cats';
+import { CatService } from '../cat.service';
 
 @Component({
   selector: 'app-cats',
@@ -9,20 +9,18 @@ import { CATS } from '../mock-cats';
 })
 
 export class CatsComponent implements OnInit {
-  // cat: Cat = {
-  //   id: 1,
-  //   name: 'Buckminster',
-  //   color: 'Calico',
-  //   hobby: 'Happily ignoring when being called.'
-  // };
-
-  cats = CATS;
+  cats: Cat[];
 
   selectedCat: Cat;
 
-  constructor() { }
+  constructor(private catService: CatService) { }
 
   ngOnInit() {
+    this.getCats();
+  }
+
+  getCats(): void {
+    this.catService.getCats().subscribe(cats => this.cats = cats);
   }
 
   onSelect(cat: Cat): void {
