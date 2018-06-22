@@ -11,8 +11,6 @@ import { CatService } from '../cat.service';
 export class CatsComponent implements OnInit {
   cats: Cat[];
 
-  selectedCat: Cat;
-
   constructor(private catService: CatService) { }
 
   ngOnInit() {
@@ -21,9 +19,5 @@ export class CatsComponent implements OnInit {
 
   getCats(): void {
     this.catService.getCats().subscribe(cats => this.cats = cats);
-  }
-
-  onSelect(cat: Cat): void {
-    this.selectedCat = cat;
   }
 }

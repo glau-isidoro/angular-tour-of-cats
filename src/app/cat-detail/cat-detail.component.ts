@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 import { Cat } from '../cat';
+import { CatService } from '../cat.service';
 
 @Component({
   selector: 'app-cat-detail',
@@ -11,9 +15,22 @@ export class CatDetailComponent implements OnInit {
 
   @Input() cat: Cat;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private catService: CatService,
+    private location: Location
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getCat();
   }
 
+  getCat(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.catService.getCat(id).subscribe(cat => this.cat = cat)
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
 }
