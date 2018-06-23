@@ -4,5 +4,14 @@
     <a routerLink="/detail/{{cat.id}}">
       <span class="badge">{{ cat.id }}</span> {{cat.name}}
     </a>
+    <button class="delete" title="delete cat" (click)="delete(cat)">x</button>
   </li>
 </ul>
+<div>
+  <label>New Cat's name:
+    <input #catName />
+  </label>
+  <button (click)="add(catName.value); catName.value=''">
+    add
+  </button>
+</div>
